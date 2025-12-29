@@ -23,6 +23,16 @@ return {
                 component_separators = "",
                 section_separators = "",
                 globalstatus = true,
+                disabled_filetypes = {
+                    statusline = {
+                        "terminal",
+                        "toggleterm",
+                        "lazy",
+                        "lazygit",
+                        "netrw",
+                        "NvimTree",
+                    },
+                },
             },
             sections = {
                 lualine_a = { "mode" },
