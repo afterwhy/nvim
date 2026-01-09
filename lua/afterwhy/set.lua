@@ -5,6 +5,14 @@ vim.g.netrw_sort_by = "name"
 vim.g.netrw_sizestyle = "H"
 vim.g.netrw_sort_sequence = [[^\d*,^\~*,*,]]
 
+-- terminal
+if vim.loop.os_uname().sysname == "Windows_NT" then
+    vim.opt.shell = "pwsh"
+    vim.opt.shellcmdflag = "-NoLogo -NoProfile -Command"
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = ""
+end
+
 --remove tildas
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 
