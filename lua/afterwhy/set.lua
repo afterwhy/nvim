@@ -8,7 +8,10 @@ vim.g.netrw_sort_sequence = [[^\d*,^\~*,*,]]
 -- terminal
 if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.opt.shell = "pwsh"
-    vim.opt.shellcmdflag = "-NoLogo -NoProfile -Command"
+    vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -Command " ..
+    "[Console]::OutputEncoding=[Text.UTF8Encoding]::UTF8; " ..
+    "$PSStyle.OutputRendering='PlainText';"
     vim.opt.shellquote = ""
     vim.opt.shellxquote = ""
 end
