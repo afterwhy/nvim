@@ -30,3 +30,6 @@ vim.keymap.set({'n', 't'}, '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<M-r>', vim.cmd.vsplit)
 vim.keymap.set('n', '<M-d>', vim.cmd.split)
 vim.keymap.set('n', '<M-q>', vim.cmd.q)
+
+-- formatting
+vim.keymap.set("n", "<leader>=", "gggqG", { buffer = true })

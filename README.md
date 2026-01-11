@@ -5,3 +5,4 @@ My neovim config
 
 * lazy-git
 * ripgrep
+* tree-sitter-cli (npm)
