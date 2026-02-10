@@ -1,4 +1,20 @@
 vim.g.mapleader = " "
+
+-- disable standard navigation
+function DisableArrowNavigation()
+    local map = vim.keymap.set
+
+    local modes = {'n', 'i', 'v'}
+    local keys = {'<Up>', '<Down>', '<Left>', '<Right>', '<Home>', '<End>', '<PageUp>', '<PageDown>'}
+
+    for _, mode in ipairs(modes) do
+        for _, key in ipairs(keys) do
+            map(mode, key, '<Nop>', { noremap = true, silent = true })
+        end
+    end
+end
+DisableArrowNavigation()
+
 vim.keymap.set("n", "<M-e>", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
