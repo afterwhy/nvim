@@ -64,3 +64,5 @@ vim.opt.colorcolumn = ""
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.title = true
