@@ -12,7 +12,7 @@ return {
             vim.g.ledger_bin = 'hledger'
             vim.g.ledger_decimal_sep = ','
             vim.g.ledger_align_at_dot = 1
-            vim.g.ledger_align_at = 52
+            vim.g.ledger_align_at = 72
             vim.g.ledger_date_format = '%Y-%m-%d'
             vim.g.ledger_fuzzy_account_completion = 1
 
