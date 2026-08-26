@@ -5,7 +5,6 @@ return {
     event = { "BufRead", "BufNewFile" },
     opts = {
         ensure_installed = { 
-            "help",
             "lua",
             "vim",
             "query",
