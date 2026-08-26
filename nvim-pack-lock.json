@@ -11,7 +11,8 @@
     },
     "cmp-hledger": {
       "rev": "dac948fbc1a29b1b4b645fd3ccdd906fd52ab559",
-      "src": "https://github.com/afterwhy/cmp-hledger"
+      "src": "https://github.com/afterwhy/cmp-hledger",
+      "version": "'main'"
     },
     "cyrillic.nvim": {
       "rev": "86186af29eed2af1a069f9e36140d116a2765c80",
@@ -40,9 +41,9 @@
       "version": ">=0.0.0"
     },
     "nvim-treesitter": {
-      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": ">=0.0.0"
+      "version": "'main'"
     },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
@@ -51,6 +52,11 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "0.2.0 - 0.2.0"
     },
     "toggleterm.nvim": {
       "rev": "50ea089fc548917cc3cc16b46a8211833b9e3c7c",

@@ -1,4 +1,6 @@
+local cyrillic_aware_keymap = require("new.cyrillic_keymap")
 local actions = require("telescope.actions.layout")
+
 require('telescope').setup({
     defaults = {
         layout_strategy = "horizontal",
@@ -16,7 +18,7 @@ require('telescope').setup({
 })
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<M-f>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope find git files' })
+cyrillic_aware_keymap('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+cyrillic_aware_keymap('n', '<M-f>', builtin.find_files, { desc = 'Telescope find files' })
+cyrillic_aware_keymap('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+cyrillic_aware_keymap('n', '<C-p>', builtin.git_files, { desc = 'Telescope find git files' })

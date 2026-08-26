@@ -1,3 +1,4 @@
+local cyrillic_aware_keymap = require("new.cyrillic_keymap")
 local autocmd_group = vim.api.nvim_create_augroup("LedgerMappings", { clear = true })
 
 local function format_hledger()
@@ -20,22 +21,15 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         local opts = { buffer = true, silent = true }
 
-        vim.keymap.set('n', '<leader>la', format_hledger, { buffer = true, desc = "Ledger: Align entire file" })
-        vim.keymap.set('n', '<leader>дф', format_hledger, { buffer = true, desc = "Ledger: Align entire file" })
-
-        vim.keymap.set('v', '<leader>la', ':LedgerAlign<CR>', opts)
-        vim.keymap.set('v', '<leader>дф', ':LedgerAlign<CR>', opts)
-
-        vim.keymap.set('n', '<leader>lw', trim_trailing_whitespaces, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
-        vim.keymap.set('n', '<leader>дц', trim_trailing_whitespaces, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
-
-        vim.keymap.set('n', '<leader>lt', ':call ledger#transaction_state_toggle(line("."), " *")<CR>', opts)
-        vim.keymap.set('n', '<leader>де', ':call ledger#transaction_state_toggle(line("."), " *")<CR>', opts)
+        cyrillic_aware_keymap('n', '<leader>la', format_hledger, { buffer = true, desc = "Ledger: Align entire file" })
+        cyrillic_aware_keymap('v', '<leader>la', ':LedgerAlign<CR>', opts)
+        cyrillic_aware_keymap('n', '<leader>lw', trim_trailing_whitespaces, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
+        cyrillic_aware_keymap('n', '<leader>lt', ':call ledger#transaction_state_toggle(line("."), " *")<CR>', opts)
 
         vim.opt_local.omnifunc = 'ledger#complete'
 
-        vim.keymap.set('n', ']]', [[/^[0-9]\{4\}/<CR>:noh<CR>]], opts)
-        vim.keymap.set('n', '[[', [[?^[0-9]\{4\}<CR>:noh<CR>]], opts)
+        cyrillic_aware_keymap('n', ']]', [[/^[0-9]\{4\}/<CR>:noh<CR>]], opts)
+        cyrillic_aware_keymap('n', '[[', [[?^[0-9]\{4\}<CR>:noh<CR>]], opts)
 
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = 0,

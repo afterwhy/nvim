@@ -1,6 +1,8 @@
 -- All vim.pack.add() declarations for the new config
 -- Plugins are ordered by dependency: independent plugins first, then dependents
 
+local cyrillic_aware_keymap = require("new.cyrillic_keymap")
+
 -- Eager plugins (always loaded)
 vim.pack.add({
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin", version = vim.version.range("*") },
@@ -22,11 +24,11 @@ require("new.config.tree")
 require("new.config.toggleterm")
 
 -- vim-fugitive keymaps
-vim.keymap.set("n", "<leader>gl", ":Git log<CR>", { desc = "Git log" })
-vim.keymap.set("n", "<leader>glc", ":Git log --oneline --decorate --graph<CR>", { desc = "Git compact log" })
-vim.keymap.set("n", "<leader>gd", ":Gdiffsplit<CR>", { desc = "Git diff" })
-vim.keymap.set("n", "<leader>gdv", ":Gvdiffsplit<CR>", { desc = "Git diff" })
-vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame" })
+cyrillic_aware_keymap("n", "<leader>gl", ":Git log<CR>", { desc = "Git log" })
+cyrillic_aware_keymap("n", "<leader>glc", ":Git log --oneline --decorate --graph<CR>", { desc = "Git compact log" })
+cyrillic_aware_keymap("n", "<leader>gd", ":Gdiffsplit<CR>", { desc = "Git diff" })
+cyrillic_aware_keymap("n", "<leader>gdv", ":Gvdiffsplit<CR>", { desc = "Git diff" })
+cyrillic_aware_keymap("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame" })
 
 -- nvim-surround and cyrillic.nvim default setup
 require("nvim-surround").setup({})
@@ -52,7 +54,7 @@ local function load_telescope()
 end
 
 for _, key in ipairs({ "<leader>ff", "<leader>fg", "<M-f>", "<C-p>" }) do
-    vim.keymap.set("n", key, function()
+    cyrillic_aware_keymap("n", key, function()
         load_telescope()
         local keys = vim.api.nvim_replace_termcodes(key, true, false, true)
         vim.api.nvim_feedkeys(keys, "mit", false)
@@ -65,7 +67,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
         vim.pack.add({
             { src = "https://github.com/hrsh7th/nvim-cmp" },
-            { src = "https://github.com/afterwhy/cmp-hledger", version = vim.version.range("main") },
+            { src = "https://github.com/afterwhy/cmp-hledger", version = "main" },
         }, {
             load = function(data)
                 vim.cmd.packadd(data.spec.name)
@@ -82,11 +84,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     once = true,
     callback = function()
         vim.pack.add({
-            { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = vim.version.range("*") },
+            { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" }
         }, {
             load = function(data)
                 vim.cmd.packadd(data.spec.name)
-                require("nvim-treesitter.configs").setup({
+                require("nvim-treesitter.config").setup({
                     ensure_installed = {
                         "lua",
                         "vim",
@@ -133,7 +135,7 @@ vim.api.nvim_create_user_command("LazyGit", function()
     vim.cmd.LazyGit()
 end, {})
 
-vim.keymap.set("n", "<leader>lg", function()
+cyrillic_aware_keymap("n", "<leader>lg", function()
     load_lazygit()
     vim.cmd.LazyGit()
 end, { desc = "LazyGit" })
@@ -148,7 +150,7 @@ vim.api.nvim_create_autocmd("FileType", {
         }, { load = true })
 
         local function rbcsv_map(buf, key, cmd)
-            vim.keymap.set("n", key, function()
+            cyrillic_aware_keymap("n", key, function()
                 if vim.b.rbcsv == 1 then
                     return ":" .. cmd .. "<CR>"
                 else
