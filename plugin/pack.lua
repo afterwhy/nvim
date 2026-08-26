@@ -67,15 +67,12 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
         vim.pack.add({
             { src = "https://github.com/hrsh7th/nvim-cmp" },
+        }, { load = true })
+        vim.pack.add({
             { src = "https://github.com/afterwhy/cmp-hledger", version = "main" },
-        }, {
-            load = function(data)
-                vim.cmd.packadd(data.spec.name)
-                if data.spec.name == "nvim-cmp" then
-                    require("new.config.completions")
-                end
-            end,
-        })
+        }, { load = true })
+
+        require("new.config.completions")
     end,
 })
 
