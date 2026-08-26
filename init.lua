@@ -1,1 +1,1 @@
-require("afterwhy")
+require("main")

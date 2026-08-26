@@ -1,6 +1,6 @@
-require("afterwhy.set")
-require("afterwhy.remap")
-require("afterwhy.lazy_init")
+require("main.set")
+require("main.remap")
+require("main.lazy_init")
 
 ----------------------------------------------
 -- Setup nvimtree so it would automatically --
