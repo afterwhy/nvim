@@ -1,3 +1,24 @@
+function format_hledger()
+    -- Сохраняем состояние экрана (позицию курсора и прокрутку)
+    local view = vim.fn.winsaveview()
+
+    -- Выполняем LedgerAlign для всего диапазона (от 1 до последней строки $)
+    -- Использование <cmd>...<CR> быстрее и не засоряет командную строку
+    vim.cmd('1,$LedgerAlign')
+
+    -- Возвращаем курсор на место
+    vim.fn.winrestview(view)
+
+    print("Ledger: Full file aligned by '" .. vim.g.ledger_decimal_sep .. "'")
+end
+
+function trim_trailing_whitespaces()
+    local save = vim.fn.winsaveview()
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.winrestview(save)
+    print("Trailing whitespace cleared")
+end
+
 return {
     -- {
     --     "dahelb/hledger.nvim"
@@ -36,43 +57,21 @@ return {
                     local opts = { buffer = true, silent = true }
 
                     -- Глобальное выравнивание всего файла по запятой
-                    vim.keymap.set('n', '<leader>la', function()
-                        -- Сохраняем состояние экрана (позицию курсора и прокрутку)
-                        local view = vim.fn.winsaveview()
-
-                        -- Выполняем LedgerAlign для всего диапазона (от 1 до последней строки $)
-                        -- Использование <cmd>...<CR> быстрее и не засоряет командную строку
-                        vim.cmd('1,$LedgerAlign')
-
-                        -- Возвращаем курсор на место
-                        vim.fn.winrestview(view)
-
-                        print("Ledger: Full file aligned by '" .. vim.g.ledger_decimal_sep .. "'")
-                    end, { buffer = true, desc = "Ledger: Align entire file" })
+                    vim.keymap.set('n', '<leader>la', format_hledger, { buffer = true, desc = "Ledger: Align entire file" })
+                    vim.keymap.set('n', '<leader>дф', format_hledger, { buffer = true, desc = "Ledger: Align entire file" })
 
                     -- возможность выравнивания только выделенного
                     vim.keymap.set('v', '<leader>la', ':LedgerAlign<CR>', opts)
+                    vim.keymap.set('v', '<leader>дф', ':LedgerAlign<CR>', opts)
                     
                     -- Удаление пробелов во всем файле без перемещения курсора
-                    vim.keymap.set('n', '<leader>lw', function()
-                        local save = vim.fn.winsaveview()
-                        vim.cmd([[%s/\s\+$//e]])
-                        vim.fn.winrestview(save)
-                        print("Trailing whitespace cleared")
-                    end, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
-
-                    -- Новая транзакция (LUA-Native решение)
-                    -- Просто вставляет текущую дату и переходит в режим вставки
-                    vim.keymap.set('n', '<leader>le', function()
-                        local date = os.date("%Y-%m-%d")
-                        -- Вставляем строку с датой и два пробела, затем прыгаем в Insert mode
-                        vim.api.nvim_put({ date .. " " }, "c", true, true)
-                        vim.cmd("startinsert!")
-                    end, { buffer = true, desc = "Ledger: Quick Entry" })
+                    vim.keymap.set('n', '<leader>lw', trim_trailing_whitespaces, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
+                    vim.keymap.set('n', '<leader>дц', trim_trailing_whitespaces, { buffer = true, desc = "Ledger: Clear trailing whitespace" })
 
                     -- Переключение статуса (! / * / )
                     -- Единственная функция, которая вызывается именно так
                     vim.keymap.set('n', '<leader>lt', ':call ledger#transaction_state_toggle(line("."), " *")<CR>', opts)
+                    vim.keymap.set('n', '<leader>де', ':call ledger#transaction_state_toggle(line("."), " *")<CR>', opts)
 
                     -- Автодополнение
                     vim.opt_local.omnifunc = 'ledger#complete'
@@ -92,38 +91,5 @@ return {
                 end,
             })
         end,
-    },
-        -- {
-        --     "saghen/blink.cmp",
-        --     version = "1.*",
-        --     opts = {
-        --         sources = {
-        --             default = { "lsp", "path", "snippets", "buffer", "omni" },
-        --         },
-        --     },
-        -- },
-        -- {
-        --     "mfussenegger/nvim-lint",
-        --     config = function()
-        --         require("lint").linters_by_ft = {
-        --             hledger = {"hledger"},
-        --         }
-        --         require("lint").events = { "BufWritePost", "BufReadPost", "InsertLeave" }
-        --     end
-        --     -- opts = {
-        --         --     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
-        --         --     linters_by_ft = {
-        --             --         hledger = { "hledger" },
-        --             --     },
-        --             --     linters = {},
-        --             -- },
-        --         },
-        --         {
-        --             "stevearc/conform.nvim",
-        --             opts = {
-        --                 formatters_by_ft = {
-        --                     ledger = { "trim_newlines", "trim_whitespace" },
-        --                 },
-        --             },
-        --         }
+    }
 }
