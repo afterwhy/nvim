@@ -5,18 +5,20 @@
       "src": "https://github.com/numToStr/Comment.nvim"
     },
     "catppuccin": {
-      "rev": "605b4603797de970e9f3a4238c199c850da03186",
-      "src": "https://github.com/catppuccin/nvim",
-      "version": ">=0.0.0"
-    },
-    "cmp-hledger": {
-      "rev": "dac948fbc1a29b1b4b645fd3ccdd906fd52ab559",
-      "src": "https://github.com/afterwhy/cmp-hledger",
-      "version": "'main'"
+      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
+      "src": "https://github.com/catppuccin/nvim"
     },
     "cyrillic.nvim": {
       "rev": "86186af29eed2af1a069f9e36140d116a2765c80",
       "src": "https://github.com/nativerv/cyrillic.nvim"
+    },
+    "hledger-nvim": {
+      "rev": "32d1eb467b2659a6243051e41f5ddeb9c241946b",
+      "src": "https://github.com/ptimoney/hledger-nvim"
+    },
+    "lazydev.nvim": {
+      "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
+      "src": "https://github.com/folke/lazydev.nvim"
     },
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
@@ -26,24 +28,17 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "nvim-cmp": {
-      "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",
-      "src": "https://github.com/hrsh7th/nvim-cmp"
+    "nvim-lspconfig": {
+      "rev": "3928e638fdedf195b23ae5a18f024afa487982bc",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
-      "rev": "1098d7b3c34adcfa7feb3289ee434529abd4afd1",
-      "src": "https://github.com/kylechui/nvim-surround",
-      "version": "3.0.0 - 4.0.0"
+      "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
+      "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-tree.lua": {
-      "rev": "531b807b8f0d6f75016a0ee1e0cd5ce2086e9d95",
-      "src": "https://github.com/nvim-tree/nvim-tree.lua",
-      "version": ">=0.0.0"
-    },
-    "nvim-treesitter": {
-      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'main'"
+      "rev": "b2aadda94b107480c48e548d6db51c6840b7b33c",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
@@ -53,23 +48,22 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "roslyn.nvim": {
+      "rev": "de9a98d61ed3fd01b5016eea5fe9e32f1a4c7cfb",
+      "src": "https://github.com/seblyng/roslyn.nvim"
+    },
     "telescope.nvim": {
-      "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
+      "rev": "3333a52ff548ba0a68af6d8da1e54f9cd96e9179",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
-      "version": "0.2.0 - 0.2.0"
+      "version": "'v0.2.1'"
     },
     "toggleterm.nvim": {
-      "rev": "50ea089fc548917cc3cc16b46a8211833b9e3c7c",
-      "src": "https://github.com/akinsho/toggleterm.nvim",
-      "version": ">=0.0.0"
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
-    },
-    "vim-ledger": {
-      "rev": "4f2d93dd914f625e2d3db47d97bd9f428fedd68f",
-      "src": "https://github.com/ledger/vim-ledger"
     }
   }
 }

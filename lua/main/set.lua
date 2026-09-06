@@ -16,16 +16,6 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.opt.shellxquote = ""
 end
 
--- haskel autoformat
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "haskell",
-  callback = function()
-    if vim.fn.executable("fourmolu") == 1 then
-        vim.opt_local.formatprg = "fourmolu --stdin-input-file %"
-    end
-  end,
-})
-
 --remove tildas
 -- vim.opt.fillchars = vim.opt.fillchars + "eob: "
 
@@ -43,12 +33,14 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
+vim.opt.winborder = "rounded"
+
 --vim.opt.swapfile = false
 --vim.opt.backup = false
 --vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 --vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true

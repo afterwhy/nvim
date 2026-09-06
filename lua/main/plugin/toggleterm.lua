@@ -1,3 +1,7 @@
+vim.pack.add({
+    { src = "https://github.com/akinsho/toggleterm.nvim" },
+})
+
 local function GetShell()
   local shell = vim.o.shell
 

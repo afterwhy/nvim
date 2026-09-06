@@ -1,3 +1,7 @@
+vim.pack.add({
+    { src = "https://github.com/nvim-lualine/lualine.nvim" },
+}, { load = true })
+
 local function in_git_repo()
     if vim.bo.buftype ~= "" then
         return false

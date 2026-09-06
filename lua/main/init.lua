@@ -1,6 +1,6 @@
 require("main.set")
 require("main.remap")
-require("main.lazy_init")
+require("main.plugin._root")
 
 ----------------------------------------------
 -- Setup nvimtree so it would automatically --

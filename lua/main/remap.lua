@@ -15,37 +15,42 @@ function DisableArrowNavigation()
 end
 DisableArrowNavigation()
 
-vim.keymap.set("n", "<M-e>", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+local keymap = require("main.util.cyrillic_keymap")
+
+keymap("n", "<leader>o", ":update<CR>:source<CR>")
+keymap("n", "<leader>w", ":write<CR>")
+
+keymap("n", "<M-e>", vim.cmd.Ex)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- move lines up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- replaces highligted woed and keeps original buffer
-vim.keymap.set("x", "<leader>p", [["_dP]])
+keymap("x", "<leader>p", [["_dP]])
 
 -- copy to system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+keymap({ "n", "v" }, "<leader>y", [["+y]])
+keymap("n", "<leader>Y", [["+Y]])
 
 -- delete to void register
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+keymap({ "n", "v" }, "<leader>d", "\"_d")
 
 -- quick replace current word
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- splits
-vim.keymap.set({'n', 't'}, '<C-h>', '<C-w>h')
-vim.keymap.set({'n', 't'}, '<C-j>', '<C-w>j')
-vim.keymap.set({'n', 't'}, '<C-k>', '<C-w>k')
-vim.keymap.set({'n', 't'}, '<C-l>', '<C-w>l')
-vim.keymap.set('n', '<M-r>', vim.cmd.vsplit)
-vim.keymap.set('n', '<M-d>', vim.cmd.split)
-vim.keymap.set('n', '<M-q>', vim.cmd.q)
+keymap({'n', 't'}, '<C-h>', '<C-w>h')
+keymap({'n', 't'}, '<C-j>', '<C-w>j')
+keymap({'n', 't'}, '<C-k>', '<C-w>k')
+keymap({'n', 't'}, '<C-l>', '<C-w>l')
+keymap('n', '<M-r>', vim.cmd.vsplit)
+keymap('n', '<M-d>', vim.cmd.split)
+keymap('n', '<M-q>', vim.cmd.q)
 
 -- formatting
-vim.keymap.set("n", "<leader>=", "gggqG", { buffer = true })
+keymap("n", "<leader>=", "gggqG", { buffer = true })
