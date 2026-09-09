@@ -20,9 +20,6 @@ local keymap = require("main.util.cyrillic_keymap")
 keymap("n", "<leader>o", ":update<CR>:source<CR>")
 keymap("n", "<leader>w", ":write<CR>")
 
-keymap("n", "<M-e>", vim.cmd.Ex)
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>")
-
 -- move lines up and down
 keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")

@@ -10,9 +10,9 @@ end
 
 
 -- require("main/plugin/colors")
--- require("main/plugin/tree")
+-- require("main/plugin/files")
 -- require("main/plugin/lualine")
--- require("main/plugin/toggleterm")
+-- require("main/plugin/terminal")
 -- require("main/plugin/git")
 -- require("main/plugin/telescope")
 -- require("main/plugin/cyrrilic")
