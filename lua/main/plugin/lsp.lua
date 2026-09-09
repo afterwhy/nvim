@@ -1,6 +1,6 @@
 local keymap = require("main.util.cyrillic_keymap")
 local function map(mode, lhs, rhs, desc)
-    keymap(mode, lhs, rhs, { buffer = bufnr, desc = "LSP: " .. desc })
+    keymap(mode, lhs, rhs, { desc = "LSP: " .. desc })
 end
 
 vim.pack.add {
@@ -79,4 +79,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Populate quickfix list
         map("n", "<leader>dq", vim.diagnostic.setqflist, "Project Diagnostics to Quickfix")
     end,
+})
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
